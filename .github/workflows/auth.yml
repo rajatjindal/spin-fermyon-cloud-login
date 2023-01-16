@@ -26,6 +26,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          repository: rajatjindal/spin-fermyon-cloud-login
 
       - name: Install Go
         uses: actions/setup-go@v3
