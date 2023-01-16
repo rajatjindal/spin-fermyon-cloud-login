@@ -47,6 +47,7 @@ jobs:
           spin --version
 
       - name: "Spin Login"
+        working-directory: fermyon-cloud-login
         run: |
           go run main.go
 
