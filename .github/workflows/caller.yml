@@ -13,12 +13,13 @@ jobs:
 
   spin-windows:
     runs-on: ubuntu-22.04
+    needs: spin-login
     steps:
       - name: Retrieve saved Spin Binary
         uses: actions/download-artifact@v3
         with:
           name: spin-fermyon-cloud-config.json
-          path: /home/runner/.config/fermyon/config.json
+          path: /home/runner/.config/fermyon/
 
       - name: cat secret 2
         run: |
