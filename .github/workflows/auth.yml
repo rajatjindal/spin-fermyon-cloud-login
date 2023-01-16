@@ -50,4 +50,4 @@ jobs:
 
       - name: cat secret
         run: |
-          sudo cat /root/.config/fermyon/config.json
+          sudo ls -ltr /root/.config/fermyon/
