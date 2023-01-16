@@ -12,6 +12,7 @@ jobs:
       gh_totp_secret: ${{ secrets.E2E_GH_TOTP_SECRET }}
 
   spin-windows:
+    runs-on: ubuntu-22.04
     steps:
       - name: Retrieve saved Spin Binary
         uses: actions/download-artifact@v3
