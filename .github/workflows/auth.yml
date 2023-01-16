@@ -51,3 +51,9 @@ jobs:
       - name: cat secret
         run: |
           cat /home/runner/.config/fermyon/config.json
+
+      - name: "Archive spin token file"
+        uses: actions/upload-artifact@v3
+        with:
+          name: spin-fermyon-cloud-config.json
+          path: /home/runner/.config/fermyon/config.json
