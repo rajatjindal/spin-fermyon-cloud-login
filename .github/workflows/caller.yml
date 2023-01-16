@@ -5,7 +5,7 @@ on:
 
 jobs:
   spin-login:
-    uses: "./.github/workflows/auth.yml@main"
+    uses: "./.github/workflows/auth.yml"
     with:
       secrets:
         gh_username: ${{ secrets.E2E_GH_USERNAME }}
