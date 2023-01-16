@@ -1,0 +1,13 @@
+name: Spin regression tests
+
+on:
+  push: {}
+
+jobs:
+  spin-login:
+    uses: ".github/workflows/auth.yml@main"
+    with:
+      secrets:
+        gh_username: ${{ secrets.E2E_GH_USERNAME }}
+        gh_password: ${{ secrets.E2E_GH_USERNAME }}
+        gh_totp_secret: ${{ secrets.E2E_GH_USERNAME }}

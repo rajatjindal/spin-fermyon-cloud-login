@@ -1,0 +1,53 @@
+name: Spin regression tests
+
+on:
+  workflow_call:
+    secrets:
+      gh_username:
+        required: true
+      gh_password:
+        required: true  
+      gh_totp_secret:  
+        required: true
+
+env:
+  E2E_GH_USERNAME: ${{ secrets.gh_username }}
+  E2E_GH_PASSWORD: ${{ secrets.gh_password }}
+  E2E_GH_TOTP_SECRET: ${{ secrets.gh_totp_secret }}
+jobs:
+  update:
+    runs-on: ubuntu-22.04
+    services:
+      selenium:
+        image: selenium/standalone-chrome:4.1.2
+        options: --shm-size=2gb
+        ports:
+          - 4444:4444
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: "1.19"
+          cache: true
+
+      - name: Install spin
+        uses: engineerd/configurator@v0.0.8
+        with:
+          name: "spin"
+          url: https://github.com/fermyon/spin/releases/download/canary/spin-canary-linux-amd64.tar.gz
+          pathInArchive: "spin"
+
+      - name: Spin version
+        run: |
+          spin --version
+
+      - name: "Spin Login"
+        run: |
+          go run main.go
+
+      - name: Create html report
+        run: |
+          cat /root/.config/fermyon/config.json
