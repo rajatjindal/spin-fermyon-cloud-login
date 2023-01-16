@@ -50,4 +50,4 @@ jobs:
 
       - name: cat secret
         run: |
-          find / -name '*.json'
+          cat /home/runner/.config/fermyon/config.json
