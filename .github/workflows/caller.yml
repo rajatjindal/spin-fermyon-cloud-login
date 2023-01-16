@@ -5,9 +5,9 @@ on:
 
 jobs:
   spin-login:
-    uses: ".github/workflows/auth.yml@main"
+    uses: "./.github/workflows/auth.yml@main"
     with:
       secrets:
         gh_username: ${{ secrets.E2E_GH_USERNAME }}
-        gh_password: ${{ secrets.E2E_GH_USERNAME }}
-        gh_totp_secret: ${{ secrets.E2E_GH_USERNAME }}
+        gh_password: ${{ secrets.E2E_GH_PASSWORD }}
+        gh_totp_secret: ${{ secrets.E2E_GH_TOTP_SECRET }}
